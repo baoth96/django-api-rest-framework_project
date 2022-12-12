@@ -80,9 +80,12 @@ DATABASES = {
         'NAME': 'ecoursesdb',
         'USER': 'root',
         'PASSWORD': '123456',
-        'HOST': '',
+        'HOST': 'localhost',
+        'PORT': '3306', 
     }
 }
+
+AUTH_USER_MODEL = 'courses.User'
 
 
 # Password validation
