@@ -13,3 +13,5 @@ class Course(models.Model):
     subject = models.CharField(max_length=255, null=False)
     description = models.TextField(null=False, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
