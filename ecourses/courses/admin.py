@@ -7,4 +7,3 @@ from .models import Category, Course, Lesson, Tag
 admin.site.register(Category)
 admin.site.register(Course)
 admin.site.register(Lesson)
-git
