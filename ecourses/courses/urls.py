@@ -1,9 +1,11 @@
-from django.contrib import admin
-from django.urls import path
+
+from django.urls import path, include
 from . import views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register('courses', views.CourseViewSet)
 
 urlpatterns = [
-    path('', views.index, name="index"),
-    path('welcome/<int:year>', views.welcome, name="welcome"),
-    path('test/', views.TestView.as_view()),
+    path('', include(router.urls)),
 ]
