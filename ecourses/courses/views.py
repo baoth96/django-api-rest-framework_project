@@ -3,6 +3,7 @@ from rest_framework import viewsets, permissions, status, generics
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser
+from drf_yasg.utils import swagger_auto_schema
 
 from .models import Course, Lesson, User
 from .serializers import CourseSerializer, LessonSerializer, UserSerializer
@@ -23,7 +24,8 @@ class UserViewSet(viewsets.ViewSet, generics.CreateAPIView, generics.RetrieveAPI
 class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.filter(active=True)
     serializer_class = CourseSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    swagger_schema = None
+    # permission_classes = [permissions.IsAuthenticated]
 
     # def get_permissions(self):
     #     if self.action == 'list':
@@ -35,6 +37,13 @@ class CourseViewSet(viewsets.ModelViewSet):
 class LessonViewSet(viewsets.ModelViewSet):
     queryset = Lesson.objects.filter(active=True)
     serializer_class = LessonSerializer
+    
+    @swagger_auto_schema(
+        operation_description="API nay dung de an mot bai viet tu phia client",
+        responses={
+            status.HTTP_200_OK: LessonSerializer()
+        }
+    )
 
     @action(methods=['post'], detail=True, url_path='hide_lesson', url_name='hide_lesson')
     def hide_lesson(self, request, pk):

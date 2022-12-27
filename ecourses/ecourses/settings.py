@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'courses.apps.CoursesConfig',
     'rest_framework',
     'oauth2_provider',
+    'drf_yasg',
+    'debug_toolbar',
 ]
 
 
@@ -60,7 +62,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 
 ROOT_URLCONF = 'ecourses.urls'
 
@@ -134,7 +143,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_ROOT = '%s/courses/static/' % BASE_DIR
 
 # Default primary key field type
