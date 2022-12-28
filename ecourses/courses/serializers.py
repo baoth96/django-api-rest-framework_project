@@ -5,7 +5,7 @@ from .models import Course, Tag, Lesson, User
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'first_name', 'last_name', 'username', 'password', 'avatar']
+        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'password', 'avatar']
         extra_kwargs = {
             'password': {'write_only': 'true'}
         }
